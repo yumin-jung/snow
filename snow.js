@@ -14,7 +14,7 @@ export class Snow {
 
         ctx.fillStyle = this.color;
         ctx.shadowColor = this.color;
-        ctx.shadowBlur = this.radius;
+        ctx.shadowBlur = this.radius * 1.5;
         ctx.moveTo(this.x, this.y);
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
