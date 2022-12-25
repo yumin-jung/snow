@@ -8,14 +8,6 @@ export class Snow {
         this.color = color;
     }
 
-    calculateSpeedY() {
-        if (this.stageWidth >= this.stageHeight) {
-            this.speedy = (Math.random() * 2 + 1) * this.stageWidth / 1680;
-        } else {
-            this.speedy = (Math.random() * 2 + 1) * this.stageHeight / 1680;
-        }
-    }
-
     draw(ctx) {
         this.y += this.speedy;
         this.x += this.speedx;

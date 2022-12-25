@@ -7,18 +7,12 @@ export class SnowController {
         this.items = [];
         this.color = ['#787878', '#787878', '#6f6f6f', '#2a2a2a'];
         this.cur = 0;
+        this.speedx = (Math.random() * 2 - 1) / 10;
     }
 
     resize(stageWidth, stageHeight) {
         this.stageWidth = stageWidth;
         this.stageHeight = stageHeight;
-
-        this.calculateSpeedX();
-        this.calculateRadius();
-    }
-
-    calculateSpeedX() {
-        this.speedx = (Math.random() * 2 - 1) / 10;
     }
 
     calculateRadius() {
@@ -34,9 +28,9 @@ export class SnowController {
     }
 
     addSnow() {
-        const randColor = Math.floor(Math.random() * 4);
-        const randRadius = Math.floor(Math.random() * 5);
-        const randx = Math.floor(Math.random() * this.stageWidth);
+        const randColor = Math.floor(Math.random() * this.color.length);
+        const randRadius = Math.floor(Math.random() * this.radius.length);
+        const randx = Math.random() * (this.stageWidth + 100) - 50;
 
         this.items.push(
             new Snow(randx, 0, this.radius[randRadius], this.color[randColor], this.speedx)
@@ -45,10 +39,22 @@ export class SnowController {
 
     draw(ctx) {
         this.cur += 1;
-        if (this.cur > 1) {
+
+        if (this.cur > 4) {
             this.cur = 0;
+            this.calculateRadius();
             this.addSnow();
         }
+
+        this.items.sort(function (a, b) {
+            if (a.color < b.color) {
+                return 1;
+            }
+            if (a.color > b.color) {
+                return -1;
+            }
+            return 0;
+        });
 
         for (let i = this.items.length - 1; i >= 0; i--) {
             const item = this.items[i];
