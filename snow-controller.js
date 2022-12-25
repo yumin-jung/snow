@@ -19,9 +19,9 @@ export class SnowController {
         let baseRadius = 0;
 
         if (this.stageWidth >= this.stageHeight) {
-            baseRadius = this.stageWidth / 420;
+            baseRadius = this.stageWidth / 800;
         } else {
-            baseRadius = this.stageHeight / 420;
+            baseRadius = this.stageHeight / 800;
         }
 
         this.radius = [baseRadius, baseRadius * 1.5, baseRadius * 2, baseRadius * 2.5, baseRadius * 3];
