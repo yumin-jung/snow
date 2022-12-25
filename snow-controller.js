@@ -34,20 +34,18 @@ export class SnowController {
     }
 
     addSnow() {
-        if (this.items.length <= 30) {
-            const randColor = Math.floor(Math.random() * 4);
-            const randRadius = Math.floor(Math.random() * 5);
-            const randx = Math.floor(Math.random() * this.stageWidth);
+        const randColor = Math.floor(Math.random() * 4);
+        const randRadius = Math.floor(Math.random() * 5);
+        const randx = Math.floor(Math.random() * this.stageWidth);
 
-            this.items.push(
-                new Snow(randx, 0, this.radius[randRadius], this.color[randColor], this.speedx)
-            );
-        }
+        this.items.push(
+            new Snow(randx, 0, this.radius[randRadius], this.color[randColor], this.speedx)
+        );
     }
 
     draw(ctx) {
         this.cur += 1;
-        if (this.cur > 16) {
+        if (this.cur > 1) {
             this.cur = 0;
             this.addSnow();
         }
