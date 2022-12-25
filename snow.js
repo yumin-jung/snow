@@ -1,7 +1,7 @@
 export class Snow {
-    constructor(x, y, radius, color, speedx) {
+    constructor(x, radius, color, speedx) {
         this.x = x;
-        this.y = y;
+        this.y = -radius * 2;
         this.speedx = speedx
         this.speedy = Math.random() * radius / 10 + 1;
         this.radius = radius;

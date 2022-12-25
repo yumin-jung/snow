@@ -33,7 +33,7 @@ export class SnowController {
         const randx = Math.random() * (this.stageWidth + 100) - 50;
 
         this.items.push(
-            new Snow(randx, 0, this.radius[randRadius], this.color[randColor], this.speedx)
+            new Snow(randx, this.radius[randRadius], this.color[randColor], this.speedx)
         );
     }
 
