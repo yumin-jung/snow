@@ -27,10 +27,10 @@ class App {
         this.snowController.resize(this.stageWidth, this.stageHeight);
     }
 
-    animate(t) {
+    animate() {
         requestAnimationFrame(this.animate.bind(this));
         this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
-        this.snowController.draw(this.ctx, t);
+        this.snowController.draw(this.ctx);
     }
 }
 
