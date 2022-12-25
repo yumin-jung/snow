@@ -7,20 +7,30 @@ export class SnowController {
         this.items = [];
         this.color = ['#787878', '#787878', '#6f6f6f', '#2a2a2a'];
         this.cur = 0;
-        this.speedx = (Math.random() * 2 - 1) / 10;
     }
 
     resize(stageWidth, stageHeight) {
         this.stageWidth = stageWidth;
         this.stageHeight = stageHeight;
 
-        const baseRadius = this.stageWidth / 420;
-        this.radius = [baseRadius, baseRadius * 1.5, baseRadius * 2, baseRadius * 2.5, baseRadius * 3];
+        this.calculateSpeedX();
+        this.calculateRadius();
     }
 
-    loaded() {
-        this.isLoaded = true;
-        this.addSheep();
+    calculateSpeedX() {
+        this.speedx = (Math.random() * 2 - 1) / 10;
+    }
+
+    calculateRadius() {
+        let baseRadius = 0;
+
+        if (this.stageWidth >= this.stageHeight) {
+            baseRadius = this.stageWidth / 420;
+        } else {
+            baseRadius = this.stageHeight / 420;
+        }
+
+        this.radius = [baseRadius, baseRadius * 1.5, baseRadius * 2, baseRadius * 2.5, baseRadius * 3];
     }
 
     addSnow() {
